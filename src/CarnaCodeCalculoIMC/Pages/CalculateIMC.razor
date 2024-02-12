@@ -3,4 +3,26 @@
 
 <PageTitle>Cálculo IMC</PageTitle>
 
-<FormIMC />
+<FormIMC OpenModal="ToggleModal" />
+
+<ImcResultModal IsOpened="@IsModalOpen">
+    <ModalBody>
+        <_congratulations OnButtonClick="ToggleModal"></_congratulations>
+    </ModalBody>
+</ImcResultModal>
+
+@code {
+    [Parameter]
+    public bool IsModalOpen { get; set; } = false;
+    protected void ToggleModal()
+    {
+        if (IsModalOpen == false)
+        {
+            IsModalOpen = true;
+        }
+        else
+        {
+            IsModalOpen = false;
+        }
+    }
+}

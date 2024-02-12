@@ -53,9 +53,12 @@
 
 @code {
     public InfoIMC Model { get; set; } = new();
+    [Parameter]
+    public EventCallback OpenModal { get; set; }
 
     public async Task OnValidSubmitAsync()
     {
-        Navigation.NavigateTo("COLOCAR PAGINA AQUI");
+        await OpenModal.InvokeAsync();
+        @* Navigation.NavigateTo("COLOCAR PAGINA AQUI"); *@
     }
 }
